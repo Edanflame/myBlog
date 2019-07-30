@@ -5,26 +5,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Edanflame的日常</title>
     <style>
         body,
         html {
             margin: 0;
             padding: 0;
+            background-color: #f2f2f2;
         }
 
-        .menu {
-            height: 69px;
-            width: 100%;
-            background-color: blue;
+        a {
+            text-decoration: none;
+            color: #333;
+            font-size: 20px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, .15);
         }
+
+        .nav-menu {
+            height: 64px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, .2);
+            position: fixed;
+            z-index: 100;
+            display: flex;
+            justify-content: space-between;
+            font-size: 20px;
+        }
+
+        .nav-menu:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        .nav-left {
+            height: 100%;
+            width: 165px;
+            text-align: center;
+            font-size: 20px;
+            line-height: 64px;
+            margin: 0 0 0 10px;
+
+        }
+
+        .nav-right {
+            margin: 0 5px;
+        }
+
+        .nav-right > ul {
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .nav-right > ul > li {
+            width: 64px;
+            margin: 0 10px;
+        }  
+
+        .nav-right > ul > li > a > i {
+            font-style: normal;
+        }       
 
         .header {
-            height: 740px;
+            height: 789px;
             width: 100%;
-            background: url('./src/images/topic1.jpg');
-            background-size: 100%;
+            background: url('./src/images/topic1.jpg') no-repeat;
+            background-size: 100% auto;
             overflow: hidden;
+            position: relative;
+            background-position: 50% 50%;
         }
 
         .box {
@@ -37,22 +85,30 @@
             height: 455px;
             margin: 50px auto;
             padding: 15px;
-            background: red;
+            background: #fff;
             position: relative;
+            border-radius: 10px;
+            color: #444;
 
+        }
+
+        .card:hover {
+            box-shadow: 0 0 6px #8a8a8a;
         }
 
         .card_title {
             width: 100%;
             height: 28px;
             background-color: #fff;
+            font-size: 20px;
         }
 
         .card_time {
             width: 100%;
             height: 14px;
-            background-color: #f0f;
+            /* background-color: #f0f; */
             margin: 10px 0;
+            font-size: 13px;
         }
 
         .card_background {
@@ -60,30 +116,59 @@
             height: 320px;
             background-color: #ff0;
             margin: 10px 0;
+            background: url(./src/images/blog1.jpg);
+            background-size: 100% auto;
         }
 
         .card_body {
             width: 100%;
             height: 20px;
-            background-color: #0ff;
+            /* background-color: #0ff; */
             margin: 0 0 10px;
         }
 
         .card_bottom {
             width: 100%;
             height: 20px;
-            background-color: #00f;
-        }
-
-        .card_background {
-            background: url(./src/images/blog.jpg);
+            /* background-color: #00f; */
         }
     </style>
 </head>
 
 <body>
-    <div class="menu">
-
+    <div class="nav-menu">
+        <div class="nav-left">
+            Edanflame的日常
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li>
+                    <a href="#">
+                        <i>主页</i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i>归档</i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i>留言</i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i>友人帐</i>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i>我</i>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="header">
 
@@ -92,33 +177,43 @@
         <div class="box">
             <div class="card">
                 <div class="card_title">
-                    第一篇
+                    <a href="#">第一篇</a>
                 </div>
                 <div class="card_time">
-                    2017
+                    2019年7月30日
                 </div>
                 <div class="card_background"></div>
-                <div class="card_body"></div>
+                <div class="card_body">
+                    文章简单介绍
+                </div>
                 <hr>
                 <div class="card_bottom"></div>
             </div>
             <div class="card">
                 <div class="card_title">
-                    第二篇
+                    <a href="#">第二篇</a>
                 </div>
-                <div class="card_time"></div>
+                <div class="card_time">
+                    2019年7月30日
+                </div>
                 <div class="card_background"></div>
-                <div class="card_body"></div>
+                <div class="card_body">
+                    文章简单介绍
+                </div>
                 <hr>
                 <div class="card_bottom"></div>
             </div>
             <div class="card">
                 <div class="card_title">
-                    第三篇
+                    <a href="#">第三篇</a>
                 </div>
-                <div class="card_time"></div>
+                <div class="card_time">
+                    2019年7月30日
+                </div>
                 <div class="card_background"></div>
-                <div class="card_body"></div>
+                <div class="card_body">
+                    文章简单介绍
+                </div>
                 <hr>
                 <div class="card_bottom"></div>
             </div>
