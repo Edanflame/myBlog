@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Edanflame/myBlog/issues"
   },
-  "homepage": "https://github.com/Edanflame/myBlog#readme"
+  "homepage": "https://github.com/Edanflame/myBlog#readme",
+  "dependencies": {
+    "animate.css": "^3.7.2"
+  }
 }
