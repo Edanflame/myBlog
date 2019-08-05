@@ -1,5 +1,9 @@
 const path = require('path')
 
+const webpack = require('webpack')
+
+const htmlWebpackPlugin = require('html-webpack-plugin')
+
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
@@ -13,17 +17,21 @@ module.exports = {
                 rules: [
                         { test: /\.vue$/, use: 'vue-loader' },
                         { test: /\.css$/, use: ['style-loader', 'css-loader'] },
-                        { test: /\.(jpg|gif|png|jpeg)$/, use: 'url-loader' }
+                        { test: /\.(jpg|gif|png|jpeg)$/, use: 'url-loader' },
+                        { test: /\.(ttf|eot|svg|woff|woff2)$/, use: 'url-loader' }, // 处理 字体文件的 loader
                 ]
                 
         },
         plugins: [
-                new VueLoaderPlugin()     
+                new VueLoaderPlugin(),
+                new htmlWebpackPlugin({
+                        template: path.join(__dirname, './src/index.html')
+                }) 
         ],
-        // htmlLoader: {
-        //         ignoreCustomFragments: [/\{\{.*?}}/],
-        //         root: path.resolve(__dirname, '../dist'),
-        //         attrs: ['img:src', 'link:href']
-        // }
+        resolve: {
+                alias: {
+                        "vue$": "vue/dist/vue.js"
+                }
+        }
 
 }

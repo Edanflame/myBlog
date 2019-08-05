@@ -1,8 +1,14 @@
-import Vue from '../../node_modules/vue/dist/vue.js'
+import Vue from 'vue'
 
 import index from '../components/index.vue'
 
 import animate from 'animate.css'
+
+import 'bootstrap/dist/css/bootstrap.css'
+
+import '../css/main.css'
+
+
 
 console.log('this is main.js')
 
@@ -11,5 +17,7 @@ const vm = new Vue({
     data:{
         message:'组件使用失败'
     },
-    render: c=>c(index)
+    render: function (createElements) {
+        return createElements(index)
+    }
 })

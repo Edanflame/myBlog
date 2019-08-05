@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <blogNav></blogNav>
     <blogHeader></blogHeader>
     <blogBody></blogBody>
