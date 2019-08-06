@@ -8,9 +8,13 @@ import 'bootstrap/dist/css/bootstrap.css'
 
 import '../css/main.css'
 
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+
+import router from "./router.js"
 
 
-console.log('this is main.js')
 
 const vm = new Vue({
     el:'#app',
@@ -19,5 +23,8 @@ const vm = new Vue({
     },
     render: function (createElements) {
         return createElements(index)
-    }
+    },
+    router
+    
+    
 })

@@ -6,14 +6,26 @@
 
 <script>
 export default {
-  methods:{
-    scrollReturnTop () {
-      document.documentElement.scrollTop = 0;
+  methods: {
+    scrollReturnTop() {
+      let scrollInterval = setInterval(function() {
+        if (!document.documentElement.scrollTop) {
+          return clearInterval(scrollInterval);
+        }
+        document.documentElement.scrollTop =
+          document.documentElement.scrollTop - 10;
+      }, 10);
     }
   }
 };
 </script>
 
 <style>
-
+.go-top {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 30px;
+  bottom: 100px;
+}
 </style>

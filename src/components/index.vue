@@ -2,7 +2,7 @@
   <div id="app">
     <blogNav></blogNav>
     <blogHeader></blogHeader>
-    <blogBody></blogBody>
+    <router-view></router-view>
     <blogGo></blogGo>
     <blogFooter></blogFooter>
   </div>
@@ -11,14 +11,13 @@
 <script>
 import blogNav from "../components/blogNav.vue";
 import blogHeader from "../components/blogHeader.vue";
-import blogBody from "../components/blogBody.vue";
-import blogGo from "../components/blogGO.vue";
+import blogGo from "../components/blogGo.vue";
 import blogFooter from "../components/blogFooter.vue";
+
 export default {
   components: {
     blogNav,
     blogHeader,
-    blogBody,
     blogGo,
     blogFooter
   }
@@ -26,4 +25,6 @@ export default {
 </script>
 
 <style>
+
+
 </style>
