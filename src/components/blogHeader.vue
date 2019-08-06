@@ -1,14 +1,23 @@
 <template>
-  <div class="header animated fadeInDown slideInDown">
-    <div class="site-meta">
-      <h1 class="site-name" style="font-family: gloria">Edanflameの日常</h1>
-      <h2 class="site-description" style="font-family: gloria">life is what you make it</h2>
+    <div class="header animated fadeInDown slideInDown">
+      <div class="site-meta">
+        <h1 class="site-name" style="font-family: gloria">Edanflameの日常</h1>
+        <h2 class="site-description" style="font-family: gloria">life is what you make it</h2>
+      </div>
     </div>
-  </div>
 </template>
 
 <script>
-export default {};
+export default {
+    mounted() {
+    window.addEventListener("hash", this.handleHash);
+  },
+  methods:{
+    handleHash(){
+      console.log("123");
+    }
+  }
+};
 </script>
 
 <style scoped>

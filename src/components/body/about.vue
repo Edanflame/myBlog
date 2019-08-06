@@ -1,37 +1,65 @@
 <template>
-  <div class="post">
-    <div class="post-header">
-      <div class="title">
-        <a href="#">
-          <h3>我</h3>
-        </a>
+  <div>
+    <!-- <div>{{ message }}</div> -->
+    <blogSideHeader></blogSideHeader>
+    <div class="post">
+      <div class="post-header">
+        <div class="title">
+          <a href="#">
+            <h3>我</h3>
+          </a>
+        </div>
+        <div class="meta">
+          <span># 1024次阅读</span>
+          <span># 2019-8-6 17:20</span>
+        </div>
       </div>
-      <div class="meta">
-        <span># &nbsp 1024次阅读</span>
-        <span># &nbsp 2019-8-6 &nbsp 17:20</span>
+      <div class="post-body">
+        <div class="post-content">
+          <hr />
+          <div class="pic"></div>
+          <hr />
+          <h2>关于我</h2>
+          <ul>
+            <li>上海在职研究生</li>
+            <li>在前端的技术海洋中遨游，勉强没有被淹死</li>
+            <li>闲来喜欢练练吉他，还没被邻居打死ing</li>
+            <li>总觉得时间不够</li>
+          </ul>
+          <h2>博客历程</h2>
+          <ul>
+            <li>2019年7月初打算捣鼓自己的博客，初次在阿里云上注册了免费的服务器</li>
+            <li>2019年8月6日第一次把初步自己完成的静态页面发送到了服务器</li>
+          </ul>
+          <h2>联系方式</h2>
+          <ul>
+            <li>Email:237397488@qq.com</li>
+            <li>Github:https://github.com/Edanflame</li>
+          </ul>
+        </div>
+        <div class="post-other"></div>
+        <div class="post-update">最后一次更新于2019-8-6</div>
       </div>
-    </div>
-    <div class="post-body">
-      <div class="post-content">
-        <hr />
-        <div class="pic"></div>
-        <hr />
-        <h2>关于我</h2>
-        <h2>博客历程</h2>
-        <h2>联系方式</h2>
-      </div>
-      <div class="post-other"></div>
-      <div class="post-update"></div>
     </div>
   </div>
 </template>
+
 <script>
-export default {};
+import blogSideHeader from "../blogSideHeader.vue";
+
+export default {
+  components: {
+    blogSideHeader
+  },
+  props:{
+    // message
+  }
+};
 </script>
+
 <style scoped>
 .post {
   width: 50%;
-  height: 700px;
   background-color: #fff;
   margin: 50px auto;
   padding: 15px;
@@ -57,6 +85,10 @@ export default {};
 
 .post-body {
   width: 100%;
+  border-top: #ddd dashed 1px;
+  border-bottom: #ddd dashed 1px;
+  margin: 25px 0 0;
+  padding: 20px 0;
 }
 
 hr {
@@ -86,7 +118,27 @@ hr {
 }
 
 h2 {
-    font-size: 22px;
-    margin: 20px 0 10px;
+  font-size: 22px;
+  padding-left: 5px;
+  margin: 20px 0 10px;
+  border-left: #000 solid 4px;
+}
+
+li {
+  font-size: 16px;
+}
+
+.post-other {
+  height: 200px;
+}
+
+.post-update {
+  height: 39px;
+  padding: 10px 0;
+  text-align: right;
+}
+
+ul {
+  list-style: circle;
 }
 </style>

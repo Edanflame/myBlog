@@ -13,6 +13,7 @@ import about from "../components/body/about.vue";
 
 const router = new VueRouter({
     routes:[
+        // { path:'/', redirect:'/' },
         { path:'/', component: home },
         { path:'/archive', component: archive },
         { path:'/gustbook', component: gustbook },
@@ -20,5 +21,7 @@ const router = new VueRouter({
         { path:'/about', component: about }
     ]
 })
+
+
 
 export default router

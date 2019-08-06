@@ -24,7 +24,5 @@ const vm = new Vue({
     render: function (createElements) {
         return createElements(index)
     },
-    router
-    
-    
+    router 
 })

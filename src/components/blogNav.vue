@@ -1,6 +1,8 @@
 <template>
-  <div class="nav-menu" id="123">
-    <div class="nav-left" style="font-family: gloria">Edanflameの日常</div>
+  <div class="nav-menu animated fadeInDown slideInDown" id="123" v-show="navShow">
+    <div class="nav-left" style="font-family: gloria">
+      <router-link to="/">Edanflameの日常</router-link>
+    </div>
     <div class="nav-right">
       <ul>
         <li>
@@ -45,9 +47,32 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data:function(){
+    return{
+      oldScrollTop:0,
+      navShow:true
+    }
+  },
+  mounted() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      var scrollTop = document.documentElement.scrollTop;
+      if(scrollTop > this.oldScrollTop){
+        console.log("zengjia");
+        this.navShow = false;
+      }else{
+        console.log("jianshao");
+        this.navShow = true;
+      }
+      this.oldScrollTop = scrollTop;
+    }
+  }
+};
 </script>
-
+  
 <style>
 .nav-menu {
   height: 64px;
