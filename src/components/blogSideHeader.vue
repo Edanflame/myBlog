@@ -1,7 +1,8 @@
 <template>
-  <div class="sideHeader animated fadeInDown slideInDown"
+  <!-- <div class="sideHeader animated fadeInDown slideInDown"
     :style="style"
-  ></div>
+  ></div> -->
+  <div class="sideHeader animated fadeInDown slideInDown" ></div>
 </template>
 
 <script>
@@ -42,7 +43,7 @@ export default {
 .sideHeader {
   height: 552px;
   width: 100%;
-  background: no-repeat;
+  background: url(../images/topic/about.jpg) no-repeat;
   background-size: 100% auto;
   overflow: hidden;
   position: relative;
