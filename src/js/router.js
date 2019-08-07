@@ -14,7 +14,7 @@ import about from "../components/body/about.vue";
 const router = new VueRouter({
     routes:[
         // { path:'/', redirect:'/' },
-        { path:'/', component: home },
+        { path:'/', component: home  },
         { path:'/archive', component: archive },
         { path:'/gustbook', component: gustbook },
         { path:'/friends', component: friends },

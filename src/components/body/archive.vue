@@ -1,9 +1,9 @@
 <template>
   <div>
-    <blogSideHeader></blogSideHeader>
+    <blogSideHeader :hash="hash"></blogSideHeader>
     <div class="archive">
       <h1>404 no found</h1>
-      <h1>请重新启动</h1>
+      <h1>组件过情人节未归</h1>
     </div>
   </div>
 </template>
@@ -15,7 +15,10 @@ import blogSideHeader from "../blogSideHeader.vue";
 export default {
   components: {
     blogSideHeader
-  }
+  },
+  props:[
+    'hash'
+  ],
 };
 </script>
 <style scoped>

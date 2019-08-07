@@ -9,14 +9,19 @@
 
 <script>
 export default {
-    mounted() {
-    window.addEventListener("hash", this.handleHash);
+  mounted() {
+    // window.addEventListener("hash", this.handleHash);
+    console.log("启用标题");
+     console.log(this.hash)
   },
   methods:{
-    handleHash(){
-      console.log("123");
-    }
-  }
+    // handleHash(){
+    //   console.log("123");
+    // }
+  },
+  props:[
+    "hash"
+  ]
 };
 </script>
 

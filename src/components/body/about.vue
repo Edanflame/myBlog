@@ -1,7 +1,6 @@
 <template>
   <div>
-    <!-- <div>{{ message }}</div> -->
-    <blogSideHeader></blogSideHeader>
+    <blogSideHeader :hash="hash"></blogSideHeader>
     <div class="post">
       <div class="post-header">
         <div class="title">
@@ -48,11 +47,18 @@
 import blogSideHeader from "../blogSideHeader.vue";
 
 export default {
+  data:function(){
+    return {
+
+    }
+  },
   components: {
     blogSideHeader
   },
-  props:{
-    // message
+  props:[
+    'hash'
+  ],
+  mounted(){
   }
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-menu animated fadeInDown slideInDown" id="123" v-show="navShow">
+  <div class="nav-menu animated fadeInDown slideInDown" id="nav" v-show="navShow">
     <div class="nav-left" style="font-family: gloria">
       <router-link to="/">Edanflameの日常</router-link>
     </div>
@@ -12,25 +12,25 @@
             主页
           </router-link>
         </li>
-        <li>
+        <li @click="navChangeHash" value="archive">
           <router-link to="/archive">
             <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
             <i>归档</i>
           </router-link>
         </li>
-        <li>
+        <li @click="navChangeHash" value="gustbook">
           <router-link to="/gustbook">
             <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
             <i>留言</i>
           </router-link>
         </li>
-        <li>
+        <li @click="navChangeHash" value="friends">
           <router-link to="/friends">
             <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
             <i>友人帐</i>
           </router-link>
         </li>
-        <li>
+        <li @click="navChangeHash">
           <router-link to="/about">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <i>我</i>
@@ -48,26 +48,52 @@
 
 <script>
 export default {
-  data:function(){
-    return{
-      oldScrollTop:0,
-      navShow:true
-    }
+  data: function() {
+    return {
+      oldScrollTop: 0,
+      navShow: true
+    };
   },
+
   mounted() {
     window.addEventListener("scroll", this.handleScroll);
   },
+
   methods: {
     handleScroll() {
       var scrollTop = document.documentElement.scrollTop;
-      if(scrollTop > this.oldScrollTop){
-        console.log("zengjia");
+      if (scrollTop > this.oldScrollTop) {
+        // console.log("zengjia");
         this.navShow = false;
-      }else{
-        console.log("jianshao");
+      } else {
+        // console.log("jianshao");
         this.navShow = true;
       }
       this.oldScrollTop = scrollTop;
+    },
+
+    navChangeHash(e) {
+      // console.log(e.target.innerText);
+      let text = e.target.innerText;
+      let hash = "";
+      switch (text) {
+        case "归档":
+          hash = "archive";
+          break;
+        case "留言":
+          hash = "guestbook";
+          break;
+        case "友人帐":
+          hash = "friends";
+          break;
+        case "我":
+          hash = "about";
+          break;
+        default:
+          hash = "home";
+          break;
+      }
+      this.$emit("changedHash", hash);
     }
   }
 };
