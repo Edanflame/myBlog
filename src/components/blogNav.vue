@@ -12,25 +12,25 @@
             主页
           </router-link>
         </li>
-        <li @click="navChangeHash" value="archive">
+        <li>
           <router-link to="/archive">
             <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
             <i>归档</i>
           </router-link>
         </li>
-        <li @click="navChangeHash" value="gustbook">
+        <li>
           <router-link to="/gustbook">
             <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
             <i>留言</i>
           </router-link>
         </li>
-        <li @click="navChangeHash" value="friends">
+        <li>
           <router-link to="/friends">
             <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
             <i>友人帐</i>
           </router-link>
         </li>
-        <li @click="navChangeHash">
+        <li>
           <router-link to="/about">
             <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
             <i>我</i>
@@ -70,30 +70,6 @@ export default {
         this.navShow = true;
       }
       this.oldScrollTop = scrollTop;
-    },
-
-    navChangeHash(e) {
-      // console.log(e.target.innerText);
-      let text = e.target.innerText;
-      let hash = "";
-      switch (text) {
-        case "归档":
-          hash = "archive";
-          break;
-        case "留言":
-          hash = "guestbook";
-          break;
-        case "友人帐":
-          hash = "friends";
-          break;
-        case "我":
-          hash = "about";
-          break;
-        default:
-          hash = "home";
-          break;
-      }
-      this.$emit("changedHash", hash);
     }
   }
 };

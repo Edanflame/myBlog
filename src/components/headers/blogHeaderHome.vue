@@ -9,19 +9,6 @@
 
 <script>
 export default {
-  mounted() {
-    // window.addEventListener("hash", this.handleHash);
-    console.log("启用标题");
-     console.log(this.hash)
-  },
-  methods:{
-    // handleHash(){
-    //   console.log("123");
-    // }
-  },
-  props:[
-    "hash"
-  ]
 };
 </script>
 
@@ -29,7 +16,7 @@ export default {
 .header {
   height: 789px;
   width: 100%;
-  background: url(../images/topic/topic1.jpg) no-repeat;
+  background: url(../../images/topic/topic1.jpg) no-repeat;
   background-size: 100% auto;
   overflow: hidden;
   position: relative;

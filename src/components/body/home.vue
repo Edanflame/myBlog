@@ -1,6 +1,6 @@
 <template>
   <div>
-    <blogHeader :hash="hash"></blogHeader>
+    <blogHeader></blogHeader>
     <div class="body">
       <div class="box">
         <div class="card">
@@ -39,15 +39,12 @@
 </template>
 
 <script>
-import blogHeader from "../blogHeader.vue";
+import blogHeader from "../headers/blogHeaderHome.vue";
 
 export default {
   components: {
     blogHeader
   },
-  props:[
-    "hash"
-  ],
   mounted(){
    
   }
