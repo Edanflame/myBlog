@@ -22,7 +22,7 @@
           <ul>
             <li>上海在职研究生</li>
             <li>在前端的技术海洋中遨游，勉强没有被淹死</li>
-            <li>闲来喜欢练练吉他，还没被邻居打死ing</li>
+            <li>闲来喜欢练练吉他，还没被邻居举报ing</li>
             <li>总觉得时间不够</li>
           </ul>
           <h2>博客历程</h2>
@@ -62,10 +62,11 @@ export default {
 
 <style scoped>
 .post {
-  width: 50%;
+  width: 56%;
   background-color: #fff;
   margin: 50px auto;
   padding: 15px;
+  border-radius: 12px;
 }
 
 .post-header {

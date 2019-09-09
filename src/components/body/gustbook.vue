@@ -37,10 +37,11 @@ export default {
 </script>
 <style scoped>
 .post {
-  width: 50%;
+  width: 56%;
   background-color: #fff;
   margin: 50px auto;
   padding: 15px;
+  border-radius: 12px;
 }
 
 .post-header {

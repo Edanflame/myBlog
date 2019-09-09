@@ -66,7 +66,7 @@ a:hover {
 
 .box {
   margin: 0 auto;
-  width: 50%;
+  width: 56%;
 }
 
 .card {
