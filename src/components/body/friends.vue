@@ -17,7 +17,7 @@
         <div>
           <audio src="../../mp3/music1.mp3" id="myMusic" @></audio>
       <div class="myPlayer">
-        <div class="myPlayerPic">
+        <div class="myPlayerPic" @click="playTheMusic()">
           <img src="../../images/cat-return.jpg" alt />
           <span class="glyphicon glyphicon-play-circle"></span>
           <span class="glyphicon glyphicon-pause"></span>
@@ -118,6 +118,13 @@ export default {
           this.totleTime = minute + ":" + second;
         }
       }
+    },
+    
+
+    //播放音乐
+    playTheMusic(e){
+      console.log(e);
+      alert("播放失败");
     }
 
   },
@@ -239,6 +246,10 @@ img {
   width: 90px;
   z-index: 1;
   position: absolute;
+}
+
+.myPlayerPic:hover {
+  cursor: pointer;
 }
 
 .myPlayerInf {
