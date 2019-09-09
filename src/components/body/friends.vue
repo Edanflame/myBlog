@@ -15,10 +15,12 @@
       </div>
       <div class="post-body">
         <div>
-          <audio src id="myMusic"></audio>
+          <audio src="../../mp3/music1.mp3" id="myMusic" @></audio>
       <div class="myPlayer">
         <div class="myPlayerPic">
           <img src="../../images/cat-return.jpg" alt />
+          <span class="glyphicon glyphicon-play-circle"></span>
+          <span class="glyphicon glyphicon-pause"></span>
         </div>
         <div class="myPlayerInf">
           <div class="myPlayerDetail">
@@ -42,7 +44,7 @@
                 <span class="thumb"></span>
               </div>
             </div>
-            <div class="time" style="">00:00/07:51</div>
+            <div class="time" style="">{{ currentTime }}/{{ totleTime }}</div>
           </div>
         </div>
       </div>
@@ -61,9 +63,68 @@
 <script>
 import blogHeader from "../headers/blogHeaderFriends.vue";
 
-export default {
+
+// var music = document.getElementById("myMusic");
+
+
+
+
+
+export default { 
+  data: function(){
+    return {
+      currentTime: "00:00",
+      totleTime: "00:00",
+      musicDuration: 256
+      
+    };
+  },
+
   components: {
     blogHeader
+  },
+
+  methods: {
+
+    //显示当前时间
+    curtime(){
+      if(music.currentTime < 10){
+        this.currentTime = "0:0" + Math.floor(music.currentTime);
+      }else if(music.currentTime < 60){
+        this.currentTime = "0:" + Math.floor(music.currentTime);
+      }else{
+        var mintue = parseInt(music.currentTime/60);
+        var second = parseInt(music.currentTime%60);
+        if(second < 10){
+          this.currentTime = minute + ":0" + second;  
+        }else{
+          this.currentTime = minute + ":" + second;
+        }
+      }
+    },
+
+    //显示总时间
+    findTotleTime(){
+      if(this.musicDuration < 10){
+        this.totleTime = "0:0" + Math.floor(this.musicDuration);
+      }else if(this.musicDuration < 60){
+        this.totleTime = "0:" + Math.floor(this.musicDuration);
+      }else{
+        let minute = parseInt(this.musicDuration/60);
+        let second = parseInt(this.musicDuration%60);
+        if(second < 10){
+          this.totleTime = minute + ":0" + second;  
+        }else{
+          this.totleTime = minute + ":" + second;
+        }
+      }
+    }
+
+  },
+
+  mounted(){
+
+    this.findTotleTime();
   }
 };
 </script>
@@ -176,13 +237,15 @@ li {
 img {
   height: 90px;
   width: 90px;
+  z-index: 1;
+  position: absolute;
 }
 
 .myPlayerInf {
   height: 80px;
   width: 630px;
   /* background-color: #0f0; */
-  margin: 10px 7px 0;
+  margin: 10px 25px 0;
 }
 
 .myPlayerControll {
@@ -230,5 +293,22 @@ img {
   line-height: 3px;
   font-size: 3px;
   color: #aaa;
+}
+
+.glyphicon-play-circle {
+  color:yellow;
+  font-size: 30px;
+  position: relative;
+  left: 33px;
+  top: 30px;
+  z-index: 2;
+}
+
+.glyphicon-pause {
+  color: red;
+  position: relative;
+  left: 35px;
+  top:50px;
+  z-index: -1;
 }
 </style>
