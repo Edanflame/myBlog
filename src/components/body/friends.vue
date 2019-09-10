@@ -15,7 +15,7 @@
       </div>
       <div class="post-body">
         <div>
-          <audio src="../../mp3/music1.mp3" id="myMusic" @></audio>
+          <audio src="../../mp3/music1.mp3" id="myMusic"></audio>
           <div class="myPlayer">
             <div class="myPlayerPic" @dblclick="playTheMusic($event)">
               <img src="../../images/cat-return.jpg" alt />
@@ -63,6 +63,8 @@
 <script>
 import blogHeader from "../headers/blogHeaderFriends.vue";
 
+// const sounds = require("../../mp3/music1.mp3")
+// require("file-loader!../../mp3/music1.mp3")
 // var music = document.getElementById("myMusic");
 
 export default {
@@ -120,7 +122,7 @@ export default {
       console.log(e.currentTarget.parentElement.previousElementSibling.duration);
 
       //读取导入歌曲的总时长，把值赋给musicDuration
-      this.musicDuration = e.currentTarget.parentElement.previousElementSibling.duration;
+      this.musicDuration = parseInt(e.currentTarget.parentElement.previousElementSibling.duration);
       
       //使用findTotleTime函数，对显示的总时长进行格式修改
       this.findTotleTime();
