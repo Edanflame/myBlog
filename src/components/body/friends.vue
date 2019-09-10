@@ -15,7 +15,7 @@
       </div>
       <div class="post-body">
         <div>
-          <audio src="../../mp3/music1.mp3" id="myMusic"></audio>
+          <audio src="./music1.mp3" id="myMusic"></audio>
           <div class="myPlayer">
             <div class="myPlayerPic" @dblclick="playTheMusic($event)">
               <img src="../../images/cat-return.jpg" alt />
