@@ -16,38 +16,38 @@
       <div class="post-body">
         <div>
           <audio src="../../mp3/music1.mp3" id="myMusic" @></audio>
-      <div class="myPlayer">
-        <div class="myPlayerPic" @click="playTheMusic()">
-          <img src="../../images/cat-return.jpg" alt />
-          <span class="glyphicon glyphicon-play-circle"></span>
-          <span class="glyphicon glyphicon-pause"></span>
-        </div>
-        <div class="myPlayerInf">
-          <div class="myPlayerDetail">
-            <p>幻化成风</p>
-          </div>
-          <div class="myPlayerList">
-            <p>风（かぜ）になる</p>
-            <p>忘（わす）れていた目（め）を闭（と）じて</p>
-            <p>取（と）りもどせ恋（こい）の歌（うた）</p>
-            <p>青空（あおぞら）に隠（かく）れている</p>
-            <p>手（て）を伸（の）ばしてもう一度（いちど）</p>
-            <p>忘（わす）れないですぐそばに</p>
-            <p>ぼくがいるいつの日（ひ）も</p>
-            <p>星空（ほしぞら）を眺（なが）めている</p>
-            <p>一人（ひとり）きりの夜明（よあ）けも</p>
-          </div>
-          <div class="myPlayerControll">
-            <div class="myPlayerControllBar">
-              <div class="myPlayerControllBarLoaded"></div>
-              <div class="myPlayerControllBarPlayed">
-                <span class="thumb"></span>
+          <div class="myPlayer">
+            <div class="myPlayerPic" @dblclick="playTheMusic($event)">
+              <img src="../../images/cat-return.jpg" alt />
+              <span class="glyphicon glyphicon-play-circle" v-show="iconDisplay"></span>
+              <span class="glyphicon glyphicon-pause" v-show="!iconDisplay"></span>
+            </div>
+            <div class="myPlayerInf">
+              <div class="myPlayerDetail">
+                <p>幻化成风</p>
+              </div>
+              <div class="myPlayerList">
+                <p>风（かぜ）になる</p>
+                <p>忘（わす）れていた目（め）を闭（と）じて</p>
+                <p>取（と）りもどせ恋（こい）の歌（うた）</p>
+                <p>青空（あおぞら）に隠（かく）れている</p>
+                <p>手（て）を伸（の）ばしてもう一度（いちど）</p>
+                <p>忘（わす）れないですぐそばに</p>
+                <p>ぼくがいるいつの日（ひ）も</p>
+                <p>星空（ほしぞら）を眺（なが）めている</p>
+                <p>一人（ひとり）きりの夜明（よあ）けも</p>
+              </div>
+              <div class="myPlayerControll">
+                <div class="myPlayerControllBar">
+                  <div class="myPlayerControllBarLoaded"></div>
+                  <div class="myPlayerControllBarPlayed">
+                    <span class="thumb"></span>
+                  </div>
+                </div>
+                <div class="time" style>{{ currentTime }}/{{ totleTime }}</div>
               </div>
             </div>
-            <div class="time" style="">{{ currentTime }}/{{ totleTime }}</div>
           </div>
-        </div>
-      </div>
         </div>
         <div class="post-content">
           <hr />
@@ -63,20 +63,15 @@
 <script>
 import blogHeader from "../headers/blogHeaderFriends.vue";
 
-
 // var music = document.getElementById("myMusic");
 
-
-
-
-
-export default { 
-  data: function(){
+export default {
+  data: function() {
     return {
       currentTime: "00:00",
       totleTime: "00:00",
-      musicDuration: 256
-      
+      musicDuration: 0,
+      iconDisplay: true
     };
   },
 
@@ -85,52 +80,63 @@ export default {
   },
 
   methods: {
-
     //显示当前时间
-    curtime(){
-      if(music.currentTime < 10){
+    curtime() {
+      if (music.currentTime < 10) {
         this.currentTime = "0:0" + Math.floor(music.currentTime);
-      }else if(music.currentTime < 60){
+      } else if (music.currentTime < 60) {
         this.currentTime = "0:" + Math.floor(music.currentTime);
-      }else{
-        var mintue = parseInt(music.currentTime/60);
-        var second = parseInt(music.currentTime%60);
-        if(second < 10){
-          this.currentTime = minute + ":0" + second;  
-        }else{
+      } else {
+        var mintue = parseInt(music.currentTime / 60);
+        var second = parseInt(music.currentTime % 60);
+        if (second < 10) {
+          this.currentTime = minute + ":0" + second;
+        } else {
           this.currentTime = minute + ":" + second;
         }
       }
     },
 
     //显示总时间
-    findTotleTime(){
-      if(this.musicDuration < 10){
+    findTotleTime() {
+      if (this.musicDuration < 10) {
         this.totleTime = "0:0" + Math.floor(this.musicDuration);
-      }else if(this.musicDuration < 60){
+      } else if (this.musicDuration < 60) {
         this.totleTime = "0:" + Math.floor(this.musicDuration);
-      }else{
-        let minute = parseInt(this.musicDuration/60);
-        let second = parseInt(this.musicDuration%60);
-        if(second < 10){
-          this.totleTime = minute + ":0" + second;  
-        }else{
+      } else {
+        let minute = parseInt(this.musicDuration / 60);
+        let second = parseInt(this.musicDuration % 60);
+        if (second < 10) {
+          this.totleTime = minute + ":0" + second;
+        } else {
           this.totleTime = minute + ":" + second;
         }
       }
     },
-    
 
     //播放音乐
-    playTheMusic(e){
-      console.log(e);
-      alert("播放失败");
-    }
+    playTheMusic(e) {
+      //在控制台显示总时间，方便检查维护，项目完成后删除
+      console.log(e.currentTarget.parentElement.previousElementSibling.duration);
 
+      //读取导入歌曲的总时长，把值赋给musicDuration
+      this.musicDuration = e.currentTarget.parentElement.previousElementSibling.duration;
+      
+      //使用findTotleTime函数，对显示的总时长进行格式修改
+      this.findTotleTime();
+
+      //播放按钮变化：播放按钮和停止按钮轮流显示
+      this.iconDisplay = !this.iconDisplay;
+
+
+      //歌曲开始播放
+
+
+      //进度条和时间开始变化
+    }
   },
 
-  mounted(){
-
+  mounted() {
     this.findTotleTime();
   }
 };
@@ -307,7 +313,7 @@ img {
 }
 
 .glyphicon-play-circle {
-  color:yellow;
+  color: yellow;
   font-size: 30px;
   position: relative;
   left: 33px;
@@ -318,8 +324,8 @@ img {
 .glyphicon-pause {
   color: red;
   position: relative;
-  left: 35px;
-  top:50px;
-  z-index: -1;
+  left: 70px;
+  top: 70px;
+  z-index: 2; 
 }
 </style>
