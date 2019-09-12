@@ -16,9 +16,9 @@
       <div class="post-body">
         <div>
           <!-- github版本 -->
-          <!-- <audio src="./dist/music1.mp3" id="myMusic"></audio> -->
+          <audio src="./dist/music1.mp3" id="myMusic"></audio>
           <!-- 本地服务器版本 -->
-          <audio src="../../mp3/music1.mp3" id="myMusic"></audio>
+          <!-- <audio src="../../mp3/music1.mp3" id="myMusic"></audio> -->
           <div class="myPlayer">
             <div class="myPlayerPic" @dblclick="playTheMusic($event)">
               <img src="../../images/cat-return.jpg" alt />
