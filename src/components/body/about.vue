@@ -10,7 +10,7 @@
         </div>
         <div class="meta">
           <span># 1024次阅读</span>
-          <span># 2019-8-6 17:20</span>
+          <span># 2019-9-12 17:20</span>
         </div>
       </div>
       <div class="post-body">
@@ -29,6 +29,7 @@
           <ul>
             <li>2019年7月初打算捣鼓自己的博客，初次在阿里云上注册了免费的服务器</li>
             <li>2019年8月6日第一次把初步自己完成的静态页面发送到了服务器</li>
+            <li>2019年9月12日初步完成网页中的歌曲播放器，并为其添加一首歌曲</li>
           </ul>
           <h2>联系方式</h2>
           <ul>
@@ -37,7 +38,7 @@
           </ul>
         </div>
         <div class="post-other"></div>
-        <div class="post-update">最后一次更新于2019-8-6</div>
+        <div class="post-update">最后一次更新于2019-9-12</div>
       </div>
     </div>
   </div>

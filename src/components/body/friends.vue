@@ -10,7 +10,7 @@
         </div>
         <div class="meta">
           <span># 1024次阅读</span>
-          <span># 2019-8-6 17:20</span>
+          <span># 2019-9-12 17:20</span>
         </div>
       </div>
       <div class="post-body">
@@ -59,7 +59,7 @@
           <hr />
         </div>
         <div class="post-other"></div>
-        <div class="post-update">最后一次更新于2019-8-6</div>
+        <div class="post-update">最后一次更新于2019-9-12</div>
       </div>
     </div>
   </div>
@@ -157,11 +157,18 @@ export default {
           //同步显示当前时间
           this.musicCurrentTime = music.currentTime;
           this.curtime();
+
+          if(parseInt(this.musicCurrentTime) === parseInt(this.musicDuration)){
+            this.currentWidth = "0%";
+            this.iconDisplay = true
+          }
         },100)
 
 
       }else{
         music.pause();
+        clearInterval(timer);//清除定时器
+
       }
 
       //进度条和时间开始变化

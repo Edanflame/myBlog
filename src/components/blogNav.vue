@@ -64,7 +64,7 @@ export default {
 
       var scrollTop = document.documentElement.scrollTop;//获取滚动条位置
 
-      if(scrollTop < this.oldScrollTop || scrollTop === 0){
+      if(scrollTop <= this.oldScrollTop || scrollTop === 0){
         // 如果滚动条在下移动，即页面在向上滑动，或者滚动条、页面在顶部，上边导航栏出现
         this.navShow = true;
       }else{
