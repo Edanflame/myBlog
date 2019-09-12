@@ -20,7 +20,7 @@
           <!-- 本地服务器版本 -->
           <!-- <audio src="../../mp3/music1.mp3" id="myMusic"></audio> -->
           <div class="myPlayer">
-            <div class="myPlayerPic" @dblclick="playTheMusic($event)">
+            <div class="myPlayerPic" @click="playTheMusic($event)">
               <img src="../../images/cat-return.jpg" alt />
               <span class="glyphicon glyphicon-play-circle" v-show="iconDisplay"></span>
               <span class="glyphicon glyphicon-pause" v-show="!iconDisplay"></span>
@@ -78,6 +78,7 @@ export default {
       currentTime: "00:00",
       totleTime: "00:00",
       musicDuration: 0,
+      musicCurrentTime: 12,
       iconDisplay: true,
       currentWidth: '50%'
     };
@@ -94,13 +95,13 @@ export default {
   methods: {
     //显示当前时间
     curtime() {
-      if (music.currentTime < 10) {
-        this.currentTime = "0:0" + Math.floor(music.currentTime);
-      } else if (music.currentTime < 60) {
-        this.currentTime = "0:" + Math.floor(music.currentTime);
+      if (this.musicCurrentTime < 10) {
+        this.currentTime = "0:0" + Math.floor(this.musicCurrentTime);
+      } else if (this.musicCurrentTime < 60) {
+        this.currentTime = "0:" + Math.floor(this.musicCurrentTime);
       } else {
-        var mintue = parseInt(music.currentTime / 60);
-        var second = parseInt(music.currentTime % 60);
+        var minute = parseInt(this.musicCurrentTime / 60);
+        var second = parseInt(this.musicCurrentTime % 60);
         if (second < 10) {
           this.currentTime = minute + ":0" + second;
         } else {
@@ -142,6 +143,7 @@ export default {
       //使用findTotleTime函数，对显示的总时长进行格式修改
       this.findTotleTime();
 
+
       //播放按钮变化：播放按钮和停止按钮轮流显示
       this.iconDisplay = !this.iconDisplay;
 
@@ -151,10 +153,12 @@ export default {
         this.currentWidth = "10%";
         music.play();//播放音乐
         clearInterval(timer);//清除定时器
-        timer = setInterval(function(){
+        timer = setInterval(()=>{
           // this.currentWidth = parseInt((music.currentTime)*100 /(music.duration)) + "%";
           // console.log("123")
           // console.log(currentWidth);
+          this.musicCurrentTime = music.currentTime;
+          this.curtime();
           this.currentWidth = "30%"
           // this.curtime();
         },1000)
@@ -356,7 +360,7 @@ img {
 
 .glyphicon-pause {
   color: red;
-  position: relative;
+  position: absolute;
   left: 70px;
   top: 70px;
   z-index: 2; 
