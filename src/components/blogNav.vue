@@ -61,14 +61,17 @@ export default {
 
   methods: {
     handleScroll() {
-      var scrollTop = document.documentElement.scrollTop;
-      if (scrollTop > this.oldScrollTop) {
-        // console.log("zengjia");
-        this.navShow = false;
-      } else {
-        // console.log("jianshao");
+
+      var scrollTop = document.documentElement.scrollTop;//获取滚动条位置
+
+      if(scrollTop < this.oldScrollTop || scrollTop === 0){
+        // 如果滚动条在下移动，即页面在向上滑动，或者滚动条、页面在顶部，上边导航栏出现
         this.navShow = true;
+      }else{
+        // 如果滚动条在上移动，即页面在向下滑动，上边导航栏消失
+        this.navShow = false;
       }
+
       this.oldScrollTop = scrollTop;
     }
   }
