@@ -105,7 +105,7 @@ a:hover {
   background-color: #ff0;
   margin: 10px 0;
   background: url(../../images/blog/blog1.jpg);
-  background-size: 100% auto;
+  background-size: 100% 100%;
 }
 
 .card_body {
