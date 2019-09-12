@@ -80,12 +80,8 @@ export default {
       musicDuration: 0,
       musicCurrentTime: 12,
       iconDisplay: true,
-      currentWidth: '50%'
+      currentWidth: '100%'
     };
-  },
-
-  watch:{
-
   },
 
   components: {
@@ -150,19 +146,18 @@ export default {
 
       //判断音乐播放状态，做出相应动作
       if(music.paused){
-        this.currentWidth = "10%";
+        this.currentWidth = "0%";
         music.play();//播放音乐
         clearInterval(timer);//清除定时器
         timer = setInterval(()=>{
-          // this.currentWidth = parseInt((music.currentTime)*100 /(music.duration)) + "%";
-          // console.log("123")
-          // console.log(currentWidth);
+          //同步显示进度条
+          this.currentWidth = (music.currentTime)*100 /(music.duration) + "%";
+          console.log(this.currentWidth);
+
+          //同步显示当前时间
           this.musicCurrentTime = music.currentTime;
           this.curtime();
-          this.currentWidth = "30%"
-          // this.curtime();
-        },1000)
-        this.currentWidth = "30%"
+        },100)
 
 
       }else{
