@@ -27,10 +27,10 @@
             </div>
             <div class="myPlayerInf">
               <div class="myPlayerDetail">
-                <p>幻化成风</p>
+                <p><b>幻化成风</b></p>
               </div>
               <div class="myPlayerList">
-                <p>风（かぜ）になる</p>
+                <!-- <p>风（かぜ）になる</p>
                 <p>忘（わす）れていた目（め）を闭（と）じて</p>
                 <p>取（と）りもどせ恋（こい）の歌（うた）</p>
                 <p>青空（あおぞら）に隠（かく）れている</p>
@@ -38,7 +38,7 @@
                 <p>忘（わす）れないですぐそばに</p>
                 <p>ぼくがいるいつの日（ひ）も</p>
                 <p>星空（ほしぞら）を眺（なが）めている</p>
-                <p>一人（ひとり）きりの夜明（よあ）けも</p>
+                <p>一人（ひとり）きりの夜明（よあ）けも</p> -->
               </div>
               <div class="myPlayerControll">
                 <div class="myPlayerControllBar">
