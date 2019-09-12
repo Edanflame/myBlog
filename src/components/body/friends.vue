@@ -15,7 +15,10 @@
       </div>
       <div class="post-body">
         <div>
-          <audio src="./dist/music1.mp3" id="myMusic"></audio>
+          <!-- github版本 -->
+          <!-- <audio src="./dist/music1.mp3" id="myMusic"></audio> -->
+          <!-- 本地服务器版本 -->
+          <audio src="../../mp3/music1.mp3" id="myMusic"></audio>
           <div class="myPlayer">
             <div class="myPlayerPic" @dblclick="playTheMusic($event)">
               <img src="../../images/cat-return.jpg" alt />
@@ -40,7 +43,8 @@
               <div class="myPlayerControll">
                 <div class="myPlayerControllBar">
                   <div class="myPlayerControllBarLoaded"></div>
-                  <div class="myPlayerControllBarPlayed">
+                  <div class="myPlayerControllBarPlayed" 
+                    :style="{width:currentWidth}">
                     <span class="thumb"></span>
                   </div>
                 </div>
@@ -62,6 +66,7 @@
 </template>
 <script>
 import blogHeader from "../headers/blogHeaderFriends.vue";
+import { clearInterval, setInterval } from 'timers';
 
 // const sounds = require("../../mp3/music1.mp3")
 // require("file-loader!../../mp3/music1.mp3")
@@ -73,8 +78,13 @@ export default {
       currentTime: "00:00",
       totleTime: "00:00",
       musicDuration: 0,
-      iconDisplay: true
+      iconDisplay: true,
+      currentWidth: '50%'
     };
+  },
+
+  watch:{
+
   },
 
   components: {
@@ -118,11 +128,16 @@ export default {
 
     //播放音乐
     playTheMusic(e) {
+
+      let music =  e.currentTarget.parentElement.previousElementSibling;
+
+      let timer;
+
       //在控制台显示总时间，方便检查维护，项目完成后删除
-      console.log(e.currentTarget.parentElement.previousElementSibling.duration);
+      console.log(music.duration);
 
       //读取导入歌曲的总时长，把值赋给musicDuration
-      this.musicDuration = parseInt(e.currentTarget.parentElement.previousElementSibling.duration);
+      this.musicDuration = parseInt(music.duration);
       
       //使用findTotleTime函数，对显示的总时长进行格式修改
       this.findTotleTime();
@@ -131,15 +146,31 @@ export default {
       this.iconDisplay = !this.iconDisplay;
 
 
-      //歌曲开始播放
+      //判断音乐播放状态，做出相应动作
+      if(music.paused){
+        this.currentWidth = "10%";
+        music.play();//播放音乐
+        clearInterval(timer);//清除定时器
+        timer = setInterval(function(){
+          // this.currentWidth = parseInt((music.currentTime)*100 /(music.duration)) + "%";
+          // console.log("123")
+          // console.log(currentWidth);
+          this.currentWidth = "30%"
+          // this.curtime();
+        },1000)
+        this.currentWidth = "30%"
 
+
+      }else{
+        music.pause();
+      }
 
       //进度条和时间开始变化
     }
   },
 
   mounted() {
-    this.findTotleTime();
+    // this.findTotleTime();
   }
 };
 </script>
@@ -294,7 +325,7 @@ img {
 
 .myPlayerControllBarPlayed {
   height: 100%;
-  width: 30%;
+  width: 10%;
   background-color: rgb(173, 122, 134);
   position: relative;
   top: -2px;
