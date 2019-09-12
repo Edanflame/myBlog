@@ -16,7 +16,9 @@
       <div class="post-body">
         <div class="post-content">
           <hr />
-          <div class="pic"></div>
+          <div class="pic">
+            <img src="../../images/pic/pic1.jpg" alt="" style="height:150px;width:150px">
+          </div>
           <hr />
           <h4>留言和吐槽</h4>
         </div>
@@ -90,6 +92,7 @@ hr {
   height: 150px;
   border-radius: 50%;
   margin: 10px auto;
+  overflow: hidden;
 }
 
 .pic:hover {

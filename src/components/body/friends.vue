@@ -21,13 +21,15 @@
           <!-- <audio src="../../mp3/music1.mp3" id="myMusic"></audio> -->
           <div class="myPlayer">
             <div class="myPlayerPic" @click="playTheMusic($event)">
-              <img src="../../images/cat-return.jpg" alt />
+              <img src="../../images/cat-return.jpg" class="cover" />
               <span class="glyphicon glyphicon-play-circle" v-show="iconDisplay"></span>
               <span class="glyphicon glyphicon-pause" v-show="!iconDisplay"></span>
             </div>
             <div class="myPlayerInf">
               <div class="myPlayerDetail">
-                <p><b>幻化成风</b></p>
+                <p>
+                  <b>幻化成风</b>
+                </p>
               </div>
               <div class="myPlayerList">
                 <!-- <p>风（かぜ）になる</p>
@@ -38,13 +40,12 @@
                 <p>忘（わす）れないですぐそばに</p>
                 <p>ぼくがいるいつの日（ひ）も</p>
                 <p>星空（ほしぞら）を眺（なが）めている</p>
-                <p>一人（ひとり）きりの夜明（よあ）けも</p> -->
+                <p>一人（ひとり）きりの夜明（よあ）けも</p>-->
               </div>
               <div class="myPlayerControll">
                 <div class="myPlayerControllBar">
                   <div class="myPlayerControllBarLoaded"></div>
-                  <div class="myPlayerControllBarPlayed" 
-                    :style="{width:currentWidth}">
+                  <div class="myPlayerControllBarPlayed" :style="{width:currentWidth}">
                     <span class="thumb"></span>
                   </div>
                 </div>
@@ -55,8 +56,21 @@
         </div>
         <div class="post-content">
           <hr />
-          <div class="pic"></div>
+          <div class="pic">
+            <img src="../../images/pic/pic1.jpg" alt style="height:150px;width:150px" />
+          </div>
           <hr />
+          <div class="friendPictures">
+            <div class="pic">
+              <img src="../../images/pic/pic2.jpg" alt style="height:150px;width:150px" />
+            </div>
+            <div class="pic">
+              <img src="../../images/pic/pic3.jpg" alt style="height:150px;width:150px" />
+            </div>
+            <div class="pic">
+              <img src="../../images/pic/pic4.jpg" alt style="height:150px;width:150px" />
+            </div>
+          </div>
         </div>
         <div class="post-other"></div>
         <div class="post-update">最后一次更新于2019-9-12</div>
@@ -66,7 +80,7 @@
 </template>
 <script>
 import blogHeader from "../headers/blogHeaderFriends.vue";
-import { clearInterval, setInterval } from 'timers';
+import { clearInterval, setInterval } from "timers";
 
 // const sounds = require("../../mp3/music1.mp3")
 // require("file-loader!../../mp3/music1.mp3")
@@ -80,7 +94,7 @@ export default {
       musicDuration: 0,
       musicCurrentTime: 12,
       iconDisplay: true,
-      currentWidth: '100%'
+      currentWidth: "100%"
     };
   },
 
@@ -125,8 +139,7 @@ export default {
 
     //播放音乐
     playTheMusic(e) {
-
-      let music =  e.currentTarget.parentElement.previousElementSibling;
+      let music = e.currentTarget.parentElement.previousElementSibling;
 
       let timer;
 
@@ -135,40 +148,36 @@ export default {
 
       //读取导入歌曲的总时长，把值赋给musicDuration
       this.musicDuration = parseInt(music.duration);
-      
+
       //使用findTotleTime函数，对显示的总时长进行格式修改
       this.findTotleTime();
-
 
       //播放按钮变化：播放按钮和停止按钮轮流显示
       this.iconDisplay = !this.iconDisplay;
 
-
       //判断音乐播放状态，做出相应动作
-      if(music.paused){
+      if (music.paused) {
         this.currentWidth = "0%";
-        music.play();//播放音乐
-        clearInterval(timer);//清除定时器
-        timer = setInterval(()=>{
+        music.play(); //播放音乐
+        clearInterval(timer); //清除定时器
+        timer = setInterval(() => {
           //同步显示进度条
-          this.currentWidth = (music.currentTime)*100 /(music.duration) + "%";
+          this.currentWidth = (music.currentTime * 100) / music.duration + "%";
           console.log(this.currentWidth);
-
           //同步显示当前时间
           this.musicCurrentTime = music.currentTime;
           this.curtime();
 
-          if(parseInt(this.musicCurrentTime) === parseInt(this.musicDuration)){
+          if (
+            parseInt(this.musicCurrentTime) === parseInt(this.musicDuration)
+          ) {
             this.currentWidth = "0%";
-            this.iconDisplay = true
+            this.iconDisplay = true;
           }
-        },100)
-
-
-      }else{
+        }, 100);
+      } else {
         music.pause();
-        clearInterval(timer);//清除定时器
-
+        clearInterval(timer); //清除定时器
       }
 
       //进度条和时间开始变化
@@ -235,6 +244,7 @@ hr {
   height: 150px;
   border-radius: 50%;
   margin: 10px auto;
+  overflow: hidden;
 }
 
 .pic:hover {
@@ -286,7 +296,7 @@ li {
   overflow: hidden;
 }
 
-img {
+.cover {
   height: 90px;
   width: 90px;
   z-index: 1;
@@ -365,6 +375,10 @@ img {
   position: absolute;
   left: 70px;
   top: 70px;
-  z-index: 2; 
+  z-index: 2;
+}
+
+.friendPictures {
+  display: flex;
 }
 </style>
