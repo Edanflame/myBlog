@@ -36,7 +36,7 @@
             <i>我</i>
           </router-link>
         </li>
-        <li>
+        <li v-show="false">
           <router-link to="search">
             <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
           </router-link>
