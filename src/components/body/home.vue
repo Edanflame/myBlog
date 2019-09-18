@@ -114,9 +114,9 @@ a:hover {
 .card_background {
   width: 100%;
   height: 320px;
-  background-color: #ff0;
   margin: 10px 0;
   overflow: hidden;
+  background: url(../../images/loading.svg);
 }
 
 .card_background img {
