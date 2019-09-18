@@ -39,7 +39,7 @@ var list = [
     id: 2,
     title: "同济懒猫",
     time: "2019年9月15日",
-    imges: "./static/images/blog/blog3.jpg",
+    imges: "./static/images/blog/blog3.png",
     content: "早上去彰武校区上英语课的时候，这只橘猫霸占着椅子谁懒觉，真是惬意"
   },
   {
