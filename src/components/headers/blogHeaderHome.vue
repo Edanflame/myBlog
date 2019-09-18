@@ -1,6 +1,6 @@
 <template>
     <div class="header animated fadeInDown slideInDown"
-    v-bind:style="{backgroundImage:'url(../../images/topic/topic' + num + '.jpg)',
+    v-bind:style="{backgroundImage:'url(./static/images/topic/topic' + num + '.jpg)',
     backgroundRepeat:'no-repeat',
     backgroundPosition:'center center',
     backgroundSize:'cover'}">
